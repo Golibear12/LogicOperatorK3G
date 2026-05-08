@@ -1,0 +1,377 @@
+    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&family=Poppins:wght@400;600;800&display=swap');
+
+    body {
+        font-family: 'Poppins', sans-serif;
+        background: radial-gradient(circle at top, #1e1e2f, #0a0a0f);
+        color: #f8fafc;
+        margin: 0;
+        padding: 20px 10px;
+        min-height: 100vh;
+    }
+
+    .container {
+        max-width: 80%;
+        margin: 0 auto;
+    }
+
+    /* HEADER */
+    h2 {
+        text-align: center;
+        color: #00f2fe;
+        margin-bottom: 0px;
+        font-size: 38px;
+        font-weight: 800;
+        letter-spacing: 2px;
+        text-shadow: 0 0 20px rgba(0, 242, 254, 0.4);
+    }
+
+    p.subtitle {
+        text-align: center;
+        color: #94a3b8;
+        margin-top: 5px;
+        font-size: 16px;
+        margin-bottom: 30px;
+        font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* TOP RESULT PANEL */
+    .result-panel {
+        background: linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.9));
+        border: 2px solid #10b981;
+        box-shadow: 0 0 25px rgba(16, 185, 129, 0.3);
+        border-radius: 16px;
+        padding: 20px 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        backdrop-filter: blur(10px);
+    }
+
+    .result-title {
+        font-size: 18px;
+        color: #94a3b8;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+    }
+
+    .result-value {
+        font-size: 42px;
+        color: #10b981;
+        font-weight: 900;
+        letter-spacing: 4px;
+        font-family: 'JetBrains Mono', monospace;
+        text-shadow: 0 0 15px rgba(16, 185, 129, 0.5);
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    /* CLEAN TEXT COLORS FOR TOKENS (No Boxes) */
+    .txt-pos-inf {
+        color: #38bdf8;
+        font-weight: 800;
+    }
+
+    .txt-neg-inf {
+        color: #fb7185;
+        font-weight: 800;
+    }
+
+    .txt-pos-one {
+        color: #34d399;
+        font-weight: 800;
+    }
+
+    .txt-neg-one {
+        color: #fb923c;
+        font-weight: 800;
+    }
+
+    /* CONTROLS */
+    .controls {
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        margin-bottom: 30px;
+        background: rgba(30, 41, 59, 0.5);
+        padding: 15px;
+        border-radius: 12px;
+        border: 1px solid #334155;
+    }
+
+    .radio-label {
+        font-size: 22px;
+        font-weight: bold;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        transition: 0.2s;
+        user-select: none;
+    }
+
+    .radio-label:hover {
+        transform: scale(1.05);
+    }
+
+    .radio-label input {
+        transform: scale(1.5);
+        cursor: pointer;
+        accent-color: #00f2fe;
+    }
+
+    .major-text {
+        color: #f87171;
+        text-shadow: 0 0 10px rgba(248, 113, 113, 0.3);
+    }
+
+    .lower-text {
+        color: #fde047;
+        text-shadow: 0 0 10px rgba(253, 224, 71, 0.3);
+    }
+
+    /* KEYPAD */
+    .keypad {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        margin-bottom: 30px;
+    }
+
+    .box {
+        height: 130px;
+        width: 125px;
+        background: linear-gradient(180deg, #334155, #1e293b);
+        border-radius: 16px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: 0.2s;
+        border: 1px solid #475569;
+    }
+
+    .box:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 25px rgba(0, 0, 0, 0.6);
+        border-color: #64748b;
+    }
+
+    .inps {
+        width: 60%;
+        height: 30px;
+        margin-bottom: 12px;
+        text-align: center;
+        font-size: 18px;
+        font-weight: bold;
+        border: none;
+        border-radius: 6px;
+        background: #0f172a;
+        color: #f8fafc;
+        border: 1px solid #475569;
+    }
+
+    .inps:focus {
+        outline: 2px solid #38bdf8;
+    }
+
+    .box-btn {
+        width: 80%;
+        height: 45px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 26px;
+        font-weight: bold;
+        transition: 0.1s;
+        font-family: 'JetBrains Mono', monospace;
+    }
+
+    .box-btn:active {
+        transform: scale(0.92);
+    }
+
+    .btn-inf-p {
+        background: #e0f2fe;
+        color: #0284c7;
+    }
+
+    .btn-inf-m {
+        background: #ffe4e6;
+        color: #e11d48;
+    }
+
+    .btn-one-p {
+        background: #d1fae5;
+        color: #059669;
+    }
+
+    .btn-one-m {
+        background: #ffedd5;
+        color: #ea580c;
+    }
+
+    .action-box {
+        height: 130px;
+        border-radius: 16px;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-weight: 800;
+        transition: 0.2s;
+        text-transform: uppercase;
+        font-size: 20px;
+    }
+
+    .action-box:active {
+        transform: scale(0.95);
+    }
+
+    .btn-solve {
+        width: 160px;
+        background: linear-gradient(135deg, #0ea5e9, #2563eb);
+        color: #fff;
+        box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
+        border: 2px solid #60a5fa;
+    }
+
+    .btn-solve:hover {
+        background: linear-gradient(135deg, #38bdf8, #3b82f6);
+        transform: translateY(-3px);
+    }
+
+    .btn-clear {
+        width: 120px;
+        background: linear-gradient(135deg, #f43f5e, #be123c);
+        color: #fff;
+        box-shadow: 0 8px 25px rgba(225, 29, 72, 0.4);
+        border: 2px solid #fb7185;
+    }
+
+    .btn-clear:hover {
+        background: linear-gradient(135deg, #fb7185, #e11d48);
+        transform: translateY(-3px);
+    }
+
+    /* TRACE BOARD (Limit 200) */
+    .trace-board {
+        background-color: #020617;
+        border: 2px solid #38bdf8;
+        border-radius: 12px;
+        padding: 20px;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 18px;
+        color: #cbd5e1;
+        min-height: 100px;
+        line-height: 1.8;
+        position: relative;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+
+    /* LIVE INPUT TOP BAR INSIDE TRACE */
+    .live-input {
+        border-bottom: 2px dashed #334155;
+        padding-bottom: 15px;
+        margin-bottom: 20px;
+        font-size: 24px;
+        color: #f8fafc;
+        letter-spacing: 2px;
+        word-break: break-all;
+    }
+
+    .trace-run {
+        border-bottom: 1px dashed #334155;
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+    }
+
+    .trace-run:last-child {
+        border-bottom: none;
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+
+    .trace-header {
+        color: #a78bfa;
+        font-weight: bold;
+        margin-bottom: 10px;
+        font-size: 20px;
+    }
+
+    .hl-clash {
+        color: #f87171;
+        font-weight: bold;
+        background: rgba(248, 113, 113, 0.1);
+        padding: 2px 6px;
+        border-radius: 4px;
+        border: 1px solid rgba(248, 113, 113, 0.3);
+        word-break: break-all;
+    }
+
+    .hl-fuse {
+        color: #34d399;
+        font-weight: bold;
+        background: rgba(52, 211, 153, 0.1);
+        padding: 2px 6px;
+        border-radius: 4px;
+        border: 1px solid rgba(52, 211, 153, 0.3);
+        word-break: break-all;
+    }
+
+    .hl-arrow {
+        color: #fbbf24;
+    }
+
+    .hl-result {
+        color: #f8fafc;
+        font-weight: bold;
+        word-break: break-all;
+    }
+
+    .hl-final {
+        color: #38bdf8;
+        font-size: 22px;
+        font-weight: 900;
+        word-break: break-all;
+    }
+
+    .copy-btn {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background: #334155;
+        color: #fff;
+        border: none;
+        padding: 8px 15px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-family: 'Poppins';
+        font-weight: bold;
+        transition: 0.2s;
+        z-index: 10;
+    }
+
+    .copy-btn:hover {
+        background: #475569;
+    }
+
+    .empty-log {
+        color: #475569;
+        text-align: center;
+        font-style: italic;
+        margin-top: 10px;
+    }
+
+    @media (max-width:450px) {
+        .container {
+            max-width: 900px;
+        }
+
+    }

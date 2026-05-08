@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K3G Symbolic Logic Terminal</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="fil.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>Computational</h2>
+        <p class="subtitle"><i class="fa-solid fa-microchip"></i>Elements logic </p>
+
+        <div class="result-panel">
+            <div class="result-title">System Status</div>
+            <div class="result-value" id="finalResult">--</div>
+        </div>
+
+        <div class="controls">
+            <label class="radio-label major-text">
+                <input type="radio" name="modeSelect" value="MAJOR" checked> <i class="fa-solid fa-shield-halved"></i>
+                MAJOR
+            </label>
+            <label class="radio-label lower-text">
+                <input type="radio" name="modeSelect" value="LOWER">LOWER
+            </label>
+        </div>
+
+        <div class="keypad">
+            <div class="box"><input type="number" class="inps" value="1" min="1"><button
+                    class="box-btn btn-inf-p b1">∞⁺</button></div>
+            <div class="box"><input type="number" class="inps" value="1" min="1"><button
+                    class="box-btn btn-inf-m b2">∞⁻</button></div>
+            <div class="box"><input type="number" class="inps" value="1" min="1"><button
+                    class="box-btn btn-one-p b3">1⁺</button></div>
+            <div class="box"><input type="number" class="inps" value="1" min="1"><button
+                    class="box-btn btn-one-m b4">1⁻</button></div>
+
+            <div class="action-box btn-solve" id="calcBtn">
+                <i class="fa-solid fa-play" style="margin-bottom: 8px; font-size: 24px;"></i> EXECUTE
+            </div>
+            <div class="action-box btn-clear" id="clearBtn">
+                <i class="fa-solid fa-trash" style="margin-bottom: 8px; font-size: 24px;"></i> PURGE
+            </div>
+        </div>
+
+        <div class="trace-board" id="traceBoard">
+            <button class="copy-btn" id="copyBtn"><i class="fa-regular fa-copy"></i> Copy Trace</button>
+
+            <div id="liveInputBox" class="live-input">
+                <span style="color:#475569; font-style:italic; font-size: 18px;">Awaiting sequence...</span>
+            </div>
+
+            <div id="traceContent">
+                <div class="empty-log">Log trace will appear here after execution.</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="fil.js"></script>
+</body>
+
+</html>
