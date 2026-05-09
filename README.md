@@ -89,6 +89,66 @@ Input: 1⁻ ∞⁻ ∞⁺ ∞⁺ 1⁺ 1⁺
 Correct Resolution (LOWER Mode):
 Input: 1⁻ ∞⁻ ∞⁺ ∞⁺ 1⁺ 1⁺ ➜ Pair: [∞⁺ ∞⁻] [∞⁺ 1⁻] 1⁺ 1⁺ ➜ Result: 1⁻ 1⁺ 1⁺ 1⁺ ➜ Pair: [1⁺ 1⁻] 1⁺ 1⁺ ➜ Result: 1⁻ 1⁺ 1⁺ ➜ Pair: [1⁺ 1⁻] 1⁺ ➜ Result: 1⁻ 1⁺ ➜ Pair: [1⁺ 1⁻] ➜ Result: 1⁻
 
+# 📖 Feel Value Theorem - Algorithm Simulation
+
+## 🌟 Introduction
+This project is a coding simulation of the **"Feel Value Theorem."** This theorem introduces a profound new perspective on calculating Infinite ($\infty$) and Finite ($1$) powers alongside Positive ($+$) and Negative ($-$) signs. 
+
+This calculator features two primary modes:
+1. **MAJOR Mode:** Base values ($1$ and $\infty$) maintain their identity, and their powers fuse together (e.g., $1^{+++}$).
+2. **LOWER Mode:** Pairs of $1$s merge to upgrade into an Infinity (e.g., $1^+ 1^+ \rightarrow \infty^+$).
+
+Regardless of the mode used, the final outputs are always **Equivalent** to each other (e.g., $M(1^{+++}) \equiv L(\infty^+ 1^+)$).
+
+## ⚙️ Core Engine: How it Works
+The code operates on a **Dynamic Step-by-Step Engine** that cycles through three main phases:
+
+### Phase 1: The "Exception" Handler (Lone Survivor Guard)
+The equation is first scanned for "Exceptions." An exception occurs ONLY when there is exactly **1 Negative element** remaining in the entire equation (a Lone Survivor) surrounded by Positive elements (or vice versa).
+*   **Special Rules (Examples):** 
+    *   $[\infty^- \text{ vs } 1^+ 1^+ 1^+] \rightarrow 1^+$ 
+    *   $[1^- \text{ vs } 1^+ 1^+] \rightarrow 1^+$
+*   If such a pattern is found, the machine solves it, writes the new equation, and restarts the check from the beginning.
+
+### Phase 2: Bulk Clash (Max Possible Pairs)
+If there are no isolated exceptions (meaning opposite signs exist in bulk), the machine applies **Global Rules**. 
+It collides the maximum possible pairs of opposing signs in a single sweep:
+*   $\infty^+$ and $\infty^-$ clash to create $1^-$ (Origin).
+*   $\infty^+$ and $1^-$ clash to create $1^+$.
+*   This process repeats until no opposing signs are left in the equation.
+
+### Phase 3: Fusion (The Final Output)
+When only elements with the same sign remain, the machine fuses them:
+*   **MAJOR Mode:** Adds powers separately for $\infty$ and $1$ (e.g., $\infty^{++} 1^+$).
+*   **LOWER Mode:** Converts every pair of $1$s into an $\infty$, keeping any remainder as $1$.
+
+---
+
+## ⚠️ Important Note: The "Exception" Paradox (Theory vs. Code Limitation)
+
+It is crucial for anyone reading this code to understand that **the "Exception Handling" block is NOT a part of the actual Feel Value Theorem!**
+
+**Why doesn't the real theory need Exceptions?**
+The actual 'Feel Value Theorem' is so perfect that scenarios like $\infty^-$ vs $1^+ 1^+ 1^+$ do not require "special rules." The theory naturally "feels" the weight and strength of the powers and yields the correct result. According to the theory, order does not matter, and the equation flows flawlessly without exceptions.
+
+**Then why use Exceptions in the code?**
+This is **NOT a flaw in the theorem, but a limitation of computer algorithms (Code)!**
+* A computer is a blind machine. When given a Global Clash rule, it blindly pits all $\infty$s and $1$s against each other.
+* For example: If the code is given `1⁻ 1⁺ 1⁺ 1⁺`, it will blindly destroy the `1⁻` with the first `1⁺`, leading to a wrong result. It cannot "feel" that the overall bulk strength of the Positives outweighs the Negative.
+* **The Solution:** To stop this "blind clashing," we had to introduce an **"Exception Catcher."** This pauses the code and reminds it: *"Wait! There is an isolated negative here. Do not apply the global rule; apply the strength/power logic according to the theory."*
+
+**Conclusion:** 
+Exceptions in the code exist merely to **artificially mimic the 'Feel Value'** that the theory inherently knows by nature.
+
+### 🛠️ Development Journey (Learning from Mistakes)
+While building this algorithm, we encountered and solved several fascinating challenges:
+1. **The Domino Effect:** Initially, `1⁻ 1⁺` would clash to create `1⁻` again, causing an infinite loop. We designed the exception rules to stop this.
+2. **The Positional Blunder:** We applied a positional (side-by-side) clashing rule for the LOWER mode, which disrupted the global clash of $\infty$s (yielding $\infty^{++}$ instead of $\infty^{--}$). We realized that the reduction/clashing phase must be 100% identical for both MAJOR and LOWER modes.
+3. **The Dynamic Master Loop:** Finally, we learned that an equation cannot be resolved in one rigid sweep. The machine must pause after every step to check if the ongoing clashes have accidentally created a new "Exception" scenario. This led to the final `Bulk Pairing + Step-by-Step Check` engine.
+
+---
+*Created and refined based on the principles of the Feel Value Theorem.*
+
 ________________________________________
 Step-by-Step Resolution Example
 ➔ ∞⁺ 1⁻ = 1⁺ ➔ ∞⁺ ∞⁻ = ∞⁺ 1⁻ ➔ 1⁻ or ∞⁺ ∞⁺ ➔ 1⁺ 1⁻ = 1⁻ ↓ Same base Same behavior (-) lower order power stays.
