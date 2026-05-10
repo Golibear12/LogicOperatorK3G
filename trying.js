@@ -107,8 +107,15 @@ $(document).ready(() => {
                     let str2 = (b2 === '∞' ? 2 : 1) * (right.length - 1);
                     let res = "1⁻";
 
-                    if (str1 > str2) res = b1 + s1.repeat(Math.max(1, str1 - str2));
-                    else if (str2 > str1) res = b2 + s2.repeat(Math.max(1, str2 - str1));
+                    if ((left === "1⁻" && right === "∞⁺") || (left === "∞⁺" && right === "1⁻")) {
+                        res = "1⁺";
+                    } else if ((left === "1⁺" && right === "∞⁻") || (left === "∞⁻" && right === "1⁺")) {
+                        res = "∞⁻";
+                    } else if (str1 > str2) {
+                        res = b1 + s1.repeat(Math.max(1, str1 - str2));
+                    } else if (str2 > str1) {
+                        res = b2 + s2.repeat(Math.max(1, str2 - str1));
+                    }
 
                     trace_elements.push(`<span class="hl-clash">[${formatToken(left, 200)} ${formatToken(right, 200)}]</span>`);
                     next_eq.push(res);
@@ -194,6 +201,7 @@ $(document).ready(() => {
                 while(ip>0 && om>0) { ip--; om--; pairs.push("[∞⁺ 1⁻]"); n_eq.push("1⁺"); }
                 while(im>0 && op>0) { im--; op--; pairs.push("[∞⁻ 1⁺]"); n_eq.push("∞⁻"); }
                 while(op>0 && om>0) { op--; om--; pairs.push("[1⁺ 1⁻]"); n_eq.push("1⁻"); }
+                while(im > 0 && op > 0) { im--; op--; pairs.push("[∞⁻ 1⁺]"); n_eq.push("1⁻"); }
                 
                 let left = [];
                 for(let i=0; i<ip; i++) left.push("∞⁺"); for(let i=0; i<im; i++) left.push("∞⁻");
@@ -205,17 +213,42 @@ $(document).ready(() => {
                 continue; 
             } 
             
-            let sign = eq[0].includes('⁺') ? '⁺' : '⁻', t_ones = 0, t_infs = 0;
-            eq.forEach(t => { if(t[0]==='1') t_ones += (t.length-1); else t_infs += (t.length-1); });
-            if (mode === "LOWER") {
-                let upg = Math.floor(t_ones / 2), rem = t_ones % 2;
-                eq = []; 
-                if (t_infs + upg > 0) eq.push("∞" + sign.repeat(t_infs + upg)); 
-                if (rem > 0) eq.push("1" + sign);
-            } else {
-                eq = []; if (t_infs > 0) eq.push("∞" + sign.repeat(t_infs)); if (t_ones > 0) eq.push("1" + sign.repeat(t_ones));
-            }
-            break; 
+          // यह तब चलेगा जब सारे + बचेंगे या सारे - बचेंगे
+let sign = eq[0] ? (eq[0].includes('⁺') ? '⁺' : '⁻') : '⁻'; // Safe check
+let t_ones = 0, t_infs = 0;
+
+eq.forEach(t => { 
+    if(t[0]==='1') t_ones += (t.length-1); 
+    else t_infs += (t.length-1); 
+});
+
+if (mode === "LOWER") {
+    let upg = Math.floor(t_ones / 2);
+    let rem = t_ones % 2;
+    
+    // 🎨 UI LOGIC: यहाँ "Algorithm Catch" का लॉग सुरक्षित रूप से छापो
+    if (t_ones >= 2) {
+        let catchLog = [];
+        for (let i = 0; i < upg; i++) {
+            catchLog.push(`[1${sign} 1${sign}]`);
+        }
+        runHTML += `<div><span class="hl-arrow">➜</span> Algorithm Catch: ${catchLog.join(" ")}</div>`;
+        runHTML += `<div><span class="hl-arrow">➜</span> Upgraded: ∞${sign.repeat(upg)}</div>`;
+    }
+
+    // ⚙️ CORE MATH LOGIC: फाइनल लिस्ट बनाओ
+    eq = []; 
+    if (t_infs + upg > 0) eq.push("∞" + sign.repeat(t_infs + upg)); 
+    if (rem > 0) eq.push("1" + sign);
+
+} else {
+    // MAJOR MODE LOGIC
+    eq = []; 
+    if (t_infs > 0) eq.push("∞" + sign.repeat(t_infs)); 
+    if (t_ones > 0) eq.push("1" + sign.repeat(t_ones));
+}
+
+break; // मास्टर लूप से बाहर निकलो
         }
 
         runHTML += `<div style="margin-top: 10px;"><span class="hl-arrow">■</span> Final Stack: <span class="hl-final">${eq.map(s => formatToken(s, 200)).join(" ")}</span></div></div>`;
