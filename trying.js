@@ -159,7 +159,7 @@ $(document).ready(() => {
         runHTML += `<div class="trace-header"><i class="fa-solid fa-microchip"></i> [ ${mode} MODE ACTIVATED ]</div>`;
         runHTML += `<div>Input: <span class="hl-result">${eq.map(s => formatToken(s, 200)).join(" ")}</span></div>`;
 
-        while (eq.length > 1 && loops < 50) {
+        while (eq.length > 1 && loops < 500) {
             
             let ex = runExceptions(eq);
             if (ex.triggered) {
