@@ -59,7 +59,7 @@ h2 { text-align: center; margin: 0 0 5px 0; font-size: 1.8rem; letter-spacing: 2
 .btn-clear:hover { background: #ff0000; color: #000; border-color: #ff0000; }
 
 .trace-board { border: 2px solid var(--border-color); padding: 15px; position: relative; margin-top: 1.5rem; background: #000; }
-.copy-btn { position: absolute; top: 10px; right: 10px; background: #000; border: 1px solid var(--border-color); color: var(--text-main); padding: 5px 10px; font-size: 0.8rem; cursor: pointer; }
+.copy-btn { position: absolute; top: 2px; right: 2px; background: #000; border: 1px solid var(--border-color); color: var(--text-main); padding: 5px 10px; font-size: 0.8rem; cursor: pointer; }
 .live-input { min-height: 40px; border-bottom: 1px dashed var(--border-color); padding-bottom: 10px; margin-bottom: 10px; font-size: 1.2rem; }
 #traceContent { font-size: 0.95rem; max-height: 180px; overflow-y: auto; color: var(--text-main); line-height: 1.6; }
 .empty-log { color: var(--text-muted); }
